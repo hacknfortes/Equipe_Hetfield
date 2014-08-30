@@ -20,7 +20,7 @@
   <strong>Categorias:</strong>
   <% @receita.categorias.each do |b| %>
       <br> <%= b.nome %>
-          <% if usuario_signed_in? %>
+          <% if usuario_signed_in?  && session[:already_voted] != @receita.id %>
              <%= button_to('Aprovar', {action: 'create', controller: :voto, receita_id: @receita.id,categoria_id: b.id, tipo: true}) +
                          button_to('Reprovar', {action: 'create', controller: :voto, receita_id: @receita.id, categoria_id: b.id, tipo: false})%>
           <%end%>

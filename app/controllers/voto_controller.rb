@@ -8,6 +8,7 @@ class VotoController < ApplicationController
 
     respond_to do |format|
       if voto.save
+        session[:already_voted] = voto.receita_id
         format.html { redirect_to voto.receita, notice: 'Seu voto foi computado' }
       else
         format.html { redirect_to voto.receita, notice: 'Não foi possivel computar seu voto' }
