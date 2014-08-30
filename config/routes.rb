@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :receitas
+
   resources :categorias
 
   devise_for :usuarios

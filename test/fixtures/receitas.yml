@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cloned_from_id: 1
+  usuario_id: 1
+  titulo: MyString
+  descricao: MyText
+  deleted_at: 2014-08-30 13:22:42
+
+two:
+  cloned_from_id: 1
+  usuario_id: 1
+  titulo: MyString
+  descricao: MyText
+  deleted_at: 2014-08-30 13:22:42

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cloned from:</strong>
+  <%= @receita.cloned_from_id %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @receita.usuario_id %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @receita.titulo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @receita.descricao %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @receita.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_receita_path(@receita) %> |
+<%= link_to 'Back', receitas_path %>
