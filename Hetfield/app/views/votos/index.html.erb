@@ -1,0 +1,33 @@
+<h1>Listing votos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Receita</th>
+      <th>Categoria</th>
+      <th>Usuario</th>
+      <th>Like</th>
+      <th>Comentario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @votos.each do |voto| %>
+      <tr>
+        <td><%= voto.receita_id %></td>
+        <td><%= voto.categoria_id %></td>
+        <td><%= voto.usuario_id %></td>
+        <td><%= voto.like %></td>
+        <td><%= voto.comentario %></td>
+        <td><%= link_to 'Show', voto %></td>
+        <td><%= link_to 'Edit', edit_voto_path(voto) %></td>
+        <td><%= link_to 'Destroy', voto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Voto', new_voto_path %>

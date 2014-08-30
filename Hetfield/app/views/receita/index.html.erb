@@ -1,0 +1,33 @@
+<h1>Listing receita</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cloned from</th>
+      <th>Usuario</th>
+      <th>Titulo</th>
+      <th>Descricao</th>
+      <th>Deleted at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @receita.each do |receitum| %>
+      <tr>
+        <td><%= receitum.cloned_from_id %></td>
+        <td><%= receitum.usuario_id %></td>
+        <td><%= receitum.titulo %></td>
+        <td><%= receitum.descricao %></td>
+        <td><%= receitum.deleted_at %></td>
+        <td><%= link_to 'Show', receitum %></td>
+        <td><%= link_to 'Edit', edit_receitum_path(receitum) %></td>
+        <td><%= link_to 'Destroy', receitum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Receitum', new_receitum_path %>

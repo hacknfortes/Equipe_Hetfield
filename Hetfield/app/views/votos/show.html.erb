@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Receita:</strong>
+  <%= @voto.receita_id %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @voto.categoria_id %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @voto.usuario_id %>
+</p>
+
+<p>
+  <strong>Like:</strong>
+  <%= @voto.like %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @voto.comentario %>
+</p>
+
+<%= link_to 'Edit', edit_voto_path(@voto) %> |
+<%= link_to 'Back', votos_path %>

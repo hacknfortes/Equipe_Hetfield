@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receita_id: 1
+  categoria_id: 1
+  usuario_id: 1
+  like: false
+  comentario: MyText
+
+two:
+  receita_id: 1
+  categoria_id: 1
+  usuario_id: 1
+  like: false
+  comentario: MyText

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cloned from:</strong>
+  <%= @receitum.cloned_from_id %>
+</p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @receitum.usuario_id %>
+</p>
+
+<p>
+  <strong>Titulo:</strong>
+  <%= @receitum.titulo %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @receitum.descricao %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @receitum.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_receitum_path(@receitum) %> |
+<%= link_to 'Back', receita_path %>
