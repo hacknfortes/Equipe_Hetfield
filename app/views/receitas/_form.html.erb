@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :titulo %><br>
-    <%= f.text_field :titulo %>
+    <%= f.label :titulo, class: 'form-label' %>
+    <%= f.text_field :titulo, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :descricao %><br>
-    <%= f.text_area :descricao %>
+    <%= f.label :descricao, class: 'form-label' %>
+    <%= f.text_area :descricao, class: 'form-control' %>
   </div>
 
     <%= f.label :categorias %><br>
@@ -26,6 +26,6 @@
         <%= f.check_box(:categorias, { :multiple => true }, c) %> <br>
     <% end %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Salvar', class: 'btn btn-success' %>
   </div>
 <% end %>

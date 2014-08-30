@@ -1,9 +1,8 @@
-<h1>Listing receitas</h1>
+<h1>Minhas Receitas</h1>
 
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
-      <th>Clonada de</th>
       <th>Receita</th>
       <th colspan="3"></th>
     </tr>
@@ -17,10 +16,11 @@
     <%- else -%>
     <% @receitas.each do |receita| %>
       <tr>
-        <td><%= receita.cloned_from_id %></td>
         <td>
           <h3><%= receita.titulo %></h3>
           <%= raw(receita.descricao) %>
+          <br>
+          <em><%= receita.cloned_from_id.titulo if receita.cloned_from %></em>
         </td>
         <td><%= link_to 'Show', receita %></td>
         <td><%= link_to 'Edit', edit_receita_path(receita) %></td>
