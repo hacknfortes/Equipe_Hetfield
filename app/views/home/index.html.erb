@@ -1,2 +1,28 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Lista de Receitas</h1>
+
+<table border="0">
+<thead>
+  <tr>
+    <th>Cloned from</th>
+    <th>Usuario</th>
+    <th>Titulo</th>
+    <th>Descricao</th>
+    <th>Deleted at</th>
+    <th colspan="3"></th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @receitas.each do |receita| %>
+    <tr>
+      <td><%= receita.cloned_from_id %></td>
+      <td><%= receita.usuario_id %></td>
+      <td><%= receita.titulo %></td>
+      <td><%= receita.descricao %></td>
+      <td><%= receita.deleted_at %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<br>

@@ -5,6 +5,7 @@ class ReceitasController < ApplicationController
   # GET /receitas.json
   def index
     @receitas = Receita.all
+    #@receita_clonada = Receita.where("cloned_from_id is not null")
   end
 
   # GET /receitas/1
