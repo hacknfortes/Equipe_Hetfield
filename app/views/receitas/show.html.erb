@@ -1,10 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Cloned from:</strong>
-  <%= @receita.cloned_from_id %>
-</p>
-
 <p>
   <strong>Usuario:</strong>
   <%= @receita.usuario_id %>
@@ -21,8 +17,10 @@
 </p>
 
 <p>
-  <strong>Deleted at:</strong>
-  <%= @receita.deleted_at %>
+  <strong>Categorias:</strong>
+  <% @receita.categorias.each do |c| %>
+    <%= c.nome %> <br>
+  <%end%>
 </p>
 
 <%= link_to 'Edit', edit_receita_path(@receita) %> |
