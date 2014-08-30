@@ -6,6 +6,7 @@ class ReceitasController < ApplicationController
   # GET /receitas
   # GET /receitas.json
   def index
+    @receitas = Receita.all
     @receitas = current_usuario.receitas.page(params[:page])
   end
 
@@ -71,6 +72,6 @@ class ReceitasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receita_params
-      params.require(:receita).permit(:titulo, :descricao)
+      params.require(:receita).permit(:titulo, :descricao, categoria_ids: [])
     end
 end

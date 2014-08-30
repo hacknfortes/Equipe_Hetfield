@@ -1,5 +1,4 @@
 <h1>Minhas Receitas</h1>
-
 <table class="table table-bordered table-striped">
   <thead>
     <tr>
@@ -19,12 +18,10 @@
         <td>
           <h3><%= receita.titulo %></h3>
           <%= raw(receita.descricao) %>
-          <br>
-          <em><%= receita.cloned_from_id.titulo if receita.cloned_from %></em>
         </td>
-        <td><%= link_to 'Show', receita %></td>
-        <td><%= link_to 'Edit', edit_receita_path(receita) %></td>
-        <td><%= link_to 'Destroy', receita, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td width="1"><%= link_to 'Visualizar', receita %></td>
+        <td width="1"><%= link_to 'Editar', edit_receita_path(receita) %></td>
+        <td width="1"><%= link_to 'Apagar', receita, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     <% end %>
@@ -32,7 +29,6 @@
 </table>
 
 <%= paginate @receitas %>
-
 <br>
 
 <%= link_to 'New Receita', new_receita_path %>

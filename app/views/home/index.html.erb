@@ -1,2 +1,27 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Lista de Receitas</h1>
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th>Título</th>
+    <th>Descrição</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% if @receitas.length == 0 %>
+      <tr>
+        <td colspan="6">Nenhuma receita foi cadastrada. Clique <%= link_to 'aqui', new_receita_path %> para cadastrar.</td>
+      </tr>
+    <%- else -%>
+  <% @receitas.each do |receita| %>
+    <tr>
+      <td><%= receita.titulo %></td>
+      <td><%= receita.descricao %></td>
+    </tr>
+  <% end %>
+  <% end %>
+</tbody>
+</table>
+
+<br>

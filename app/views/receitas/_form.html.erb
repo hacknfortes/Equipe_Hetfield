@@ -19,12 +19,11 @@
     <%= f.label :descricao, class: 'form-label' %>
     <%= f.text_area :descricao, class: 'form-control' %>
   </div>
-
-    <%= f.label :categorias %><br>
-    <% Categoria.all.each do |c| %>
-        <%= c.nome %>
-        <%= f.check_box(:categorias, { :multiple => true }, c) %> <br>
-    <% end %>
+  <div class="field">
+    <%= f.label :categorias, class: 'form-label' %>
+    <%= f.collection_check_boxes :categoria_ids, Categoria.all, :id, :nome %>
+  </div>
+    
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success' %>
   </div>
