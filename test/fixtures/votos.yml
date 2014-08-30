@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  receita_id: 
+  categoria_id: 
+  usuario_id: 
+  like: false
+  comentario: MyString
+
+two:
+  receita_id: 
+  categoria_id: 
+  usuario_id: 
+  like: false
+  comentario: MyString

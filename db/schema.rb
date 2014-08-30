@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140830162242) do
+ActiveRecord::Schema.define(version: 20140830164606) do
 
   create_table "categorias", force: true do |t|
     t.string   "nome"
@@ -47,5 +47,19 @@ ActiveRecord::Schema.define(version: 20140830162242) do
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
   add_index "usuarios", ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
+
+  create_table "votos", force: true do |t|
+    t.integer  "receita_id"
+    t.integer  "categoria_id"
+    t.integer  "usuario_id"
+    t.boolean  "like"
+    t.string   "comentario"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votos", ["categoria_id"], name: "index_votos_on_categoria_id"
+  add_index "votos", ["receita_id"], name: "index_votos_on_receita_id"
+  add_index "votos", ["usuario_id"], name: "index_votos_on_usuario_id"
 
 end
