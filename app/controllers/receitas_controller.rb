@@ -1,10 +1,12 @@
 class ReceitasController < ApplicationController
   before_action :set_receita, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_usuario!
+
   # GET /receitas
   # GET /receitas.json
   def index
-    @receitas = Receita.all
+    @receitas = current_usuario.receitas.page(params[:page])
   end
 
   # GET /receitas/1
@@ -14,7 +16,7 @@ class ReceitasController < ApplicationController
 
   # GET /receitas/new
   def new
-    @receita = Receita.new
+    @receita = current_usuario.receitas.new
   end
 
   # GET /receitas/1/edit
@@ -24,7 +26,7 @@ class ReceitasController < ApplicationController
   # POST /receitas
   # POST /receitas.json
   def create
-    @receita = Receita.new(receita_params)
+    @receita = current_usuario.receitas.new(receita_params)
 
     respond_to do |format|
       if @receita.save
@@ -64,11 +66,11 @@ class ReceitasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_receita
-      @receita = Receita.find(params[:id])
+      @receita = current_usuario.receitas.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receita_params
-      params.require(:receita).permit(:cloned_from_id, :usuario_id, :titulo, :descricao, :deleted_at)
+      params.require(:receita).permit(:titulo, :descricao)
     end
 end
