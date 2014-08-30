@@ -8,7 +8,68 @@
 </head>
 <body>
 
-<%= yield %>
+<nav class="navbar navbar-inverse navbar-primary navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toque para navegar</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Receitas Online</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Receitas', root_path %></li>
+        <%- if usuario_signed_in? -%>
+        <li><%= link_to 'Minhas Receitas', receitas_path %></li>
+        <li><%= link_to 'Nova Receitas', new_receita_path %></li>
+        <%- end -%>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <%- if usuario_signed_in? -%>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Victor Sobreira <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Configurações</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sair</a></li>
+          </ul>
+        </li>
+      <%- else -%>
+        <li><%= link_to 'Entrar', usuario_session_path %></li>
+        <li><%= link_to 'Cadastrar-se', new_usuario_registration_path %></li>
+      <%- end -%>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div class="container-fluid">
+  <div class="container-wrapper">
+    <main class="main">
+      <%= yield %>
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6">
+        <strong>Versão:</strong> <%= app_version %>
+      </div>
+      <div class="col-sm-6 text-right">
+        <p>Desenvolvido por equipe <strong>Hetfield</strong></p>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
