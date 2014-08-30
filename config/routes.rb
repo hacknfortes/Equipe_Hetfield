@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+ post 'voto/create'
+
   root 'home#index'
 
   resources :receitas
 
   resources :categorias
+
+  # post "voto/create(.:format)" => ˜votos#create˜
 
   devise_for :usuarios
   # The priority is based upon order of creation: first created -> highest priority.

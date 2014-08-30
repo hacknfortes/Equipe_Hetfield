@@ -18,9 +18,13 @@
 
 <p>
   <strong>Categorias:</strong>
-  <% @receita.categorias.each do |c| %>
-    <%= c.nome %> <br>
-  <%end%>
+  <% @receita.categorias.each do |b| %>
+      <br> <%= b.nome %>
+          <% if usuario_signed_in? %>
+             <%= button_to('Aprovar', {action: 'create', controller: :voto, receita_id: @receita.id,categoria_id: b.id, tipo: true}) +
+                         button_to('Reprovar', {action: 'create', controller: :voto, receita_id: @receita.id, categoria_id: b.id, tipo: false})%>
+          <%end%>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_receita_path(@receita) %> |
