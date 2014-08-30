@@ -1,5 +1,5 @@
 class ReceitasController < ApplicationController
-  before_action :set_receita, only: [:show, :edit, :update, :destroy]
+  before_action :set_receita, only: [:show, :clonar, :destroy]
 
   before_action :authenticate_usuario!
 
@@ -20,8 +20,13 @@ class ReceitasController < ApplicationController
     @receita = current_usuario.receitas.new
   end
 
-  # GET /receitas/1/edit
-  def edit
+  # GET /receitas/1/clonar
+  def clonar
+    categorias = @receita.categorias.collect { |e| e.id }
+    @receita = current_usuario.receitas.new(@receita.attributes)
+    @receita.id = nil
+    @receita.cloned_from_id = params[:id]
+    @receita.categoria_ids = categorias
   end
 
   # POST /receitas
@@ -31,7 +36,7 @@ class ReceitasController < ApplicationController
 
     respond_to do |format|
       if @receita.save
-        format.html { redirect_to @receita, notice: 'Receita was successfully created.' }
+        format.html { redirect_to @receita, notice: 'Receita cadastrada com sucesso.' }
         format.json { render :show, status: :created, location: @receita }
       else
         format.html { render :new }
@@ -39,21 +44,7 @@ class ReceitasController < ApplicationController
       end
     end
   end
-
-  # PATCH/PUT /receitas/1
-  # PATCH/PUT /receitas/1.json
-  def update
-    respond_to do |format|
-      if @receita.update(receita_params)
-        format.html { redirect_to @receita, notice: 'Receita was successfully updated.' }
-        format.json { render :show, status: :ok, location: @receita }
-      else
-        format.html { render :edit }
-        format.json { render json: @receita.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
+  
   # DELETE /receitas/1
   # DELETE /receitas/1.json
   def destroy
@@ -72,6 +63,6 @@ class ReceitasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receita_params
-      params.require(:receita).permit(:titulo, :descricao, categoria_ids: [])
+      params.require(:receita).permit(:cloned_from_id, :titulo, :descricao, categoria_ids: [])
     end
 end

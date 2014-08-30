@@ -1,27 +1,10 @@
-<h1>Lista de Receitas</h1>
-
-<table class="table table-bordered table-striped">
-<thead>
-  <tr>
-    <th>Título</th>
-    <th>Descrição</th>
-  </tr>
-</thead>
-
-<tbody>
-  <% if @receitas.length == 0 %>
-      <tr>
-        <td colspan="6">Nenhuma receita foi cadastrada. Clique <%= link_to 'aqui', new_receita_path %> para cadastrar.</td>
-      </tr>
-    <%- else -%>
+<div class="row">
   <% @receitas.each do |receita| %>
-    <tr>
-      <td><%= receita.titulo %></td>
-      <td><%= receita.descricao %></td>
-    </tr>
+    <div class="col-sm-12">
+      <h3><%= link_to receita.titulo, receita_path(receita) %></h3>
+      <%= raw(receita.descricao.gsub(/\n/,',&nbsp;')[0..100]) %>...<br>
+    </div>
   <% end %>
-  <% end %>
-</tbody>
-</table>
+</div>
 
-<br>
+<%= paginate @receitas %>
