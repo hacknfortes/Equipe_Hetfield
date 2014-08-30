@@ -28,3 +28,9 @@
     <%- end -%>
   <%- end -%>
 <%- end -%>
+<% if usuario_signed_in? && session[:already_voted] == @receita.id%>
+    Positivos: <%= Voto.where(receita: @receita.id, like: true).all.size %>
+    Negativo: <%= Voto.where(receita: @receita.id, like: false).all.size %>
+<%end%>
+<h1><%= @receita.titulo %></h1>
+<h1><%= @receita.titulo %></h1>

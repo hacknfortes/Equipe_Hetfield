@@ -3,7 +3,7 @@ class VotoController < ApplicationController
     voto = Voto.new(usuario: current_usuario)
     voto.receita = Receita.find(params[:receita_id])
     voto.categoria = Categoria.find(params[:categoria_id])
-    voto.like = params[:like]
+    voto.like = params[:tipo]
     voto.save
 
     respond_to do |format|
