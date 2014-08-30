@@ -6,12 +6,8 @@ class ReceitasController < ApplicationController
   # GET /receitas
   # GET /receitas.json
   def index
-<<<<<<< HEAD
     @receitas = Receita.all
-    #@receita_clonada = Receita.where("cloned_from_id is not null")
-=======
     @receitas = current_usuario.receitas.page(params[:page])
->>>>>>> 68253620e020555effaf330b14b26daa62450dcc
   end
 
   # GET /receitas/1
