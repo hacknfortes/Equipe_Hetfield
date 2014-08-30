@@ -10,13 +10,13 @@
       </ul>
     </div>
   <% end %>
-
+  <%= f.hidden_field :cloned_from_id %>
   <div class="field">
-    <%= f.label :titulo, class: 'form-label' %>
-    <%= f.text_field :titulo, class: 'form-control' %>
+    <%= f.label :titulo, 'Título', class: 'form-label' %>
+    <%= f.text_field :titulo, autofocus: true, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :descricao, class: 'form-label' %>
+    <%= f.label :descricao, 'Descrição', class: 'form-label' %>
     <%= f.text_area :descricao, class: 'form-control' %>
   </div>
   <div class="field">
@@ -26,5 +26,6 @@
     
   <div class="actions">
     <%= f.submit 'Salvar', class: 'btn btn-success' %>
+    <%= link_to 'Cancelar', receitas_path, class: 'btn btn-link' %>
   </div>
 <% end %>

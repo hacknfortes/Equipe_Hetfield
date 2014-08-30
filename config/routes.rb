@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  resources :receitas
+  resources :receitas do
+    get :clonar, on: :member
+  end
 
   resources :categorias
 

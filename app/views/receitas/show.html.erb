@@ -1,27 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-<p>
-  <strong>Usuario:</strong>
-  <%= @receita.usuario_id %>
-</p>
+<h1><%= @receita.titulo %></h1>
+
+<p><%= raw(@receita.descricao.gsub(/\n/,'<br>')) %></p>
 
 <p>
-  <strong>Titulo:</strong>
-  <%= @receita.titulo %>
-</p>
-
-<p>
-  <strong>Descricao:</strong>
-  <%= @receita.descricao %>
-</p>
-
-<p>
-  <strong>Categorias:</strong>
+  <strong>Categorias:</strong><br>
   <% @receita.categorias.each do |c| %>
-    <%= c.nome %> <br>
+    <%= c.nome %><br>
   <%end%>
 </p>
 
-<%= link_to 'Edit', edit_receita_path(@receita) %> |
-<%= link_to 'Back', receitas_path %>
+<%= link_to 'Voltar', receitas_path, class: 'btn btn-default btn-xs' %>
+<%- if usuario_signed_in? -%>
+  <%= link_to clonar_receita_path(@receita), class: 'btn btn-default btn-xs' do %>
+    <i class="fa fa-copy"></i> 
+    Clonar Receita
+  <%- end -%>
+  <% if @receita.usuario.id == current_usuario.id %>
+    <%= link_to @receita, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do %>
+      <i class="fa fa-trash-o"></i> 
+      Apagar
+    <%- end -%>
+  <%- end -%>
+<%- end -%>

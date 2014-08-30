@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @receitas = Receita.all
+    @receitas = Receita.page(params[:page])
   end
 end
